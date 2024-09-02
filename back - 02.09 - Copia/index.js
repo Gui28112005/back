@@ -4,7 +4,13 @@ const cors = require('cors');
 const { Pool } = require('pg');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
+
+app.get('/', function (req, res)){
+res.send('hello word')
+}
+
+app.listen(process.env.PORT || 3000 )
 
 // Middleware
 app.use(bodyParser.json());
@@ -12,7 +18,7 @@ app.use(cors());
 
 // Conexão com o banco de dados Supabase (PostgreSQL)
 const pool = new Pool({
-    connectionString: 'postgresql://postgres:Tonystark19@aws-0-sa-east-1.pooler.supabase.com:6543/postgres', // substitua com a URL de conexão fornecida pelo Supabase
+    connectionString: 'postgresql://postgres.boyoucdjmyudjljjbvrl:@Tonystark19@aws-0-sa-east-1.pooler.supabase.com:6543/postgres', // substitua com a URL de conexão fornecida pelo Supabase
     ssl: {
         rejectUnauthorized: false
     }
@@ -24,11 +30,6 @@ pool.connect((err) => {
         return;
     }
     console.log('Conectado ao Supabase');
-});
-
-// Rota de teste
-app.get('/', (req, res) => {
-    res.send('Hello World');
 });
 
 // Rota para criar um novo anúncio
