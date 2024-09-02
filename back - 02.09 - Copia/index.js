@@ -6,12 +6,6 @@ const { Pool } = require('pg');
 const app = express();
 const port = 3000;
 
-app.get('/', function (req, res)){
-res.send('hello word')
-}
-
-app.listen(process.env.PORT || 3000 )
-
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
